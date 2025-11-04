@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/bex-bdsm-checklist/static/css/main.4dc37232.css",
+    "main.js": "/bex-bdsm-checklist/static/js/main.e333c7a3.js",
+    "static/js/453.58f5de71.chunk.js": "/bex-bdsm-checklist/static/js/453.58f5de71.chunk.js",
+    "index.html": "/bex-bdsm-checklist/index.html",
+    "main.4dc37232.css.map": "/bex-bdsm-checklist/static/css/main.4dc37232.css.map",
+    "main.e333c7a3.js.map": "/bex-bdsm-checklist/static/js/main.e333c7a3.js.map",
+    "453.58f5de71.chunk.js.map": "/bex-bdsm-checklist/static/js/453.58f5de71.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4dc37232.css",
+    "static/js/main.e333c7a3.js"
+  ]
+}
