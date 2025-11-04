@@ -1,0 +1,127 @@
+:root {
+  --primary: #4bb521;
+  --yellow: #ffdd00;
+  --black: #161616;
+  --light-grey: #bdbdbd;
+  --dark-grey: #565656;
+  --white: #ffffff;
+}
+
+* { box-sizing: border-box;}
+
+.App {
+  text-align: center;
+  background-color: #464d5a;
+  min-height: 100vh;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.grid {
+  align-items: stretch;
+  gap: 20px;
+}
+.grid .row {
+  position: relative;
+}
+
+.grid .column {
+  flex: 1 1 50%;
+  margin: 0;
+  padding: 0;
+}
+
+.grid .column:first-child label {
+  border-bottom-right-radius: 0%;
+  border-top-right-radius: 0%;
+}
+
+.grid .column:last-child label {
+  border-bottom-left-radius: 0%;
+  border-top-left-radius: 0%;
+  border-left: 0px none;
+}
+
+.grid .column label {
+  cursor: pointer;
+  border: 1px solid #282c34;
+  border-radius: .5rem;
+  padding: .2rem .3rem;
+
+  background-color: var(--white);
+  width: 100%;
+}
+
+.grid .column input:focus + label {
+  z-index: 5;
+  position: relative;
+  border-color: var(--dark-grey);
+  box-shadow: 2px 2px 3px var(--black) ;
+}
+
+
+.grid .column input:active + label {
+  background-color: var(--light-grey);
+}
+
+.grid .column input:checked:not(:active) + label {
+  background-color: var(--dark-grey);
+  color: var(--white);
+}
+
+.icon {
+display: block;
+}
+.role-row {
+  margin-bottom: 30px;
+  /* overflow: hidden; */
+}
+/* .role-column:hover {
+  cursor: pointer;
+  border-color: #282c34;
+  background-color: #969dac;
+} */
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sr-only {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
