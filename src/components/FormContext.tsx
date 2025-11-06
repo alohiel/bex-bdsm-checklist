@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react'
-import { FeelingsFormValuesType, GeneralFormValuesType } from './TableForms'
+import { FeelingsFormValuesType, GeneralFormValuesType } from '../utils/types'
 
 export enum TableFormKinds {
   kinks = 'kinks',

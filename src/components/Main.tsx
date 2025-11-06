@@ -10,12 +10,27 @@ export const Main = (props: {}) => {
     <div className="App">
       <ButtonImport />
       <ButtonExport />
-      <header className="App-header">Yes/No/Maybe</header>
-      <TableForms />
-      <div style={{ minHeight: '100vh' }}>
-        <h1>Summary</h1>
-        {/* <Summary form={activityFormValues} /> */}
-      </div>
+      <header className="App-header">
+        <h1>Yes/No/Maybe</h1>
+        <p>
+          Interactive version of{' '}
+          <a href="https://www.bextalkssex.com/" target="_blank">
+            Bex Caputo
+          </a>
+          's Yes/No/Maybe{' '}
+          <a
+            href="https://www.bextalkssex.com/wp-content/uploads/2016/10/BexCaputoYesNoMaybe.pdf"
+            target="_blank">
+            worksheet
+          </a>
+          .
+        </p>
+      </header>
+      <main>
+        <section></section>
+
+        <TableForms />
+      </main>
     </div>
   )
 }

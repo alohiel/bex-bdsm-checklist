@@ -3,9 +3,8 @@ import { Button, Form, Modal, ModalBody } from 'react-bootstrap'
 import { FormContext } from './FormContext'
 
 export const ButtonImport = () => {
-  const { forms, setForms } = useContext(FormContext)
+  const { setForms } = useContext(FormContext)
   const [modalOpen, setModalOpen] = useState(false)
-  const [file, setFile] = useState<{}>()
 
   const handleFileChange = (e) => {
     if (e.target.files) {

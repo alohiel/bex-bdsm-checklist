@@ -2,91 +2,9 @@ import { useContext, useEffect, useState } from 'react'
 import Papa from 'papaparse'
 import { FormContext, TableFormKinds } from './FormContext'
 import { TableForm } from './TableForm'
-import { Nav, Tab, TabContainer, TabContent, Tabs } from 'react-bootstrap'
+import { Nav } from 'react-bootstrap'
 import { Loading } from './Loading'
-
-export enum FormCategories {
-  into = 'into',
-  willing = 'willing',
-  maybe = 'maybe',
-  no = 'no',
-  often = 'often',
-  sometimes = 'sometimes',
-  never = 'never',
-}
-export enum Roles {
-  giving = 'giving',
-  receiving = 'receiving',
-}
-
-export enum Experiences {
-  new = 'new',
-  favourite = 'favourite',
-}
-export const generalCategories = {
-  [FormCategories.into]: 'Yes (Into)',
-  [FormCategories.willing]: 'Yes (Willing)',
-  [FormCategories.maybe]: 'Maybe',
-  [FormCategories.no]: 'No',
-}
-
-export const feelingCategories = {
-  [FormCategories.often]: 'Often',
-  [FormCategories.sometimes]: 'Sometimes',
-  [FormCategories.never]: 'Never',
-}
-
-export type GeneralFormValuesType = {
-  [key: string]: {
-    [FormCategories.into]: ActivityProperties
-    [FormCategories.willing]: ActivityProperties
-    [FormCategories.maybe]: ActivityProperties
-    [FormCategories.no]: LimitedActivityProperties
-  }
-}
-
-export type FeelingsFormValuesType = {
-  [key: string]: {
-    [FormCategories.often]: ActivityProperties
-    [FormCategories.sometimes]: ActivityProperties
-    [FormCategories.never]: LimitedActivityProperties
-  }
-}
-
-export type RoleProperties = {
-  selected: boolean
-  [Experiences.new]: boolean
-  [Experiences.favourite]: boolean
-}
-
-type ActivityProperties = {
-  [Roles.giving]: RoleProperties
-  [Roles.receiving]: RoleProperties
-}
-
-type LimitedActivityProperties = {
-  [Roles.giving]: { selected: boolean }
-  [Roles.receiving]: { selected: boolean }
-}
-
-type RowLabels = {
-  kinks: string[]
-  language: string[]
-  feelings: string[]
-}
-
-const emptyRolesExperiences = {
-  [Roles.giving]: {
-    selected: false,
-    new: false,
-    favourite: false,
-  },
-  [Roles.receiving]: {
-    selected: false,
-    new: false,
-    favourite: false,
-  },
-}
+import { RowLabels, FormCategories, emptyRolesExperiences, Roles } from '../utils/types'
 
 export const TableForms = (props: {}) => {
   const { forms, setForms } = useContext(FormContext)
