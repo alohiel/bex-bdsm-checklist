@@ -41,6 +41,23 @@
   color: #61dafb;
 }
 
+.subnav { 
+  background-color: #bdbdbd;
+  position: sticky; 
+  top: 0; 
+  z-index: 10;
+}
+
+thead { 
+  position: sticky; 
+  top: 40px; 
+  z-index: 10; 
+}
+
+thead th {
+  vertical-align: middle;
+}
+
 .grid {
   align-items: stretch;
   gap: 20px;
@@ -51,61 +68,58 @@
 
 .grid .column {
   flex: 1 1 50%;
-  margin: 0;
-  padding: 0;
+  padding: 2px;
 }
 
-.grid .column:first-child label {
-  border-bottom-right-radius: 0%;
-  border-top-right-radius: 0%;
-}
-
-.grid .column:last-child label {
-  border-bottom-left-radius: 0%;
-  border-top-left-radius: 0%;
-  border-left: 0px none;
-}
-
-.grid .column label {
+.grid .field-group {
   cursor: pointer;
   border: 1px solid #282c34;
   border-radius: .5rem;
-  padding: .2rem .3rem;
-
   background-color: var(--white);
   width: 100%;
 }
 
-.grid .column input:focus + label {
-  z-index: 5;
-  position: relative;
-  border-color: var(--dark-grey);
-  box-shadow: 2px 2px 3px var(--black) ;
+.grid .field {
+  display: block;
+  width: 100%;
 }
 
-
-.grid .column input:active + label {
-  background-color: var(--light-grey);
+.grid .field-group:not(.never) .field {
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+  border-bottom: 1px solid #161616;
 }
 
-.grid .column input:checked:not(:active) + label {
-  background-color: var(--dark-grey);
-  color: var(--white);
+.grid .field:hover, .grid .field:focus {
+  border-bottom: 1px solid #161616;
 }
 
 .icon {
-display: block;
+  margin-left: 5px;
 }
-.role-row {
-  margin-bottom: 30px;
-  /* overflow: hidden; */
-}
-/* .role-column:hover {
-  cursor: pointer;
-  border-color: #282c34;
-  background-color: #969dac;
-} */
 
+.grid .favourite {
+  width: 50%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
+
+.grid .new {
+  width: 50%;
+  border-top-right-radius: 0%;
+  border-top-left-radius: 0%;
+  border-bottom-left-radius: 0%;
+}
+
+.grid .never .field {
+  border-bottom: 0;
+  width: 100%;
+}
+.grid .never .new,
+.grid .never .favourite {
+  display: none;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -124,4 +138,15 @@ display: block;
     height: 1px;
     width: 1px;
     overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .grid .field-group {
+    display: block;
+  }
+  .icon {
+    display: none;
+  }
+}
+@media only screen and (max-width: 950px) {
 }
