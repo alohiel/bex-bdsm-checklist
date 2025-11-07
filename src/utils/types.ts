@@ -1,3 +1,5 @@
+import { TableFormKinds } from '../components/FormContext'
+
 export enum FormCategories {
   into = 'into',
   willing = 'willing',
@@ -69,6 +71,12 @@ export const emptyRolesExperiences = {
   },
 }
 
+export const kindText = {
+  [TableFormKinds.kinks]: 'Kinks',
+  [TableFormKinds.language]: 'Language',
+  [TableFormKinds.feelings]: 'Feelings',
+}
+
 export const categoryText = {
   [FormCategories.into]: {
     label: `Yes (Into)`,
@@ -97,7 +105,20 @@ export const categoryText = {
   [FormCategories.never]: { label: `Never`, tooltip: `For feelings you never want to feel.` },
 }
 
-export const roleText = {}
+export const roleText = {
+  [TableFormKinds.kinks]: {
+    [Roles.giving]: { label: `Top`, tooltip: `` },
+    [Roles.receiving]: { label: `Bottom`, tooltip: `` },
+  },
+  [TableFormKinds.language]: {
+    [Roles.giving]: { label: `Speaker`, tooltip: `` },
+    [Roles.receiving]: { label: `Listener`, tooltip: `` },
+  },
+  [TableFormKinds.feelings]: {
+    [Roles.giving]: { label: `Inspiring`, tooltip: `` },
+    [Roles.receiving]: { label: `Feeling`, tooltip: `` },
+  },
+}
 export const experienceText = {
   [Experiences.favourite]: { label: `Favourite`, text: `Indicates a favourite.` },
   [Experiences.new]: { label: `New`, text: `Indicates something this person has never tried.` },

@@ -23,7 +23,7 @@ export const ButtonImport = () => {
 
   return (
     <>
-      <Button onClick={() => setModalOpen(true)}>Import</Button>
+      <Button onClick={() => setModalOpen(true)}>Import Selection</Button>
       <Modal show={modalOpen} onHide={() => setModalOpen(false)}>
         <Modal.Body>
           <Form.Group controlId="formFile" className="mb-3">

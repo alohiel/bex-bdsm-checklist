@@ -29,14 +29,27 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--bs-gray-900);
   min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 10px;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+.App-header a {
+  color: var(--bs-secondary);
+}
+.App-header p {
+  font-size: calc(10px + 1vmin);
+}
+
+.fileOptions {
+  display: flex;
+  gap: 10px;
+  margin: 0 auto 20px;
 }
 
 .App-link {
@@ -44,10 +57,17 @@
 }
 
 .subnav {
-  background-color: #bdbdbd;
+  background-color: var(--bs-gray-300);
   position: sticky;
   top: 0;
   z-index: 10;
+  font-weight: 700;
+}
+
+.table-hover > tbody > tr:hover > *,
+.table-hover > tbody > tr:focus-within > * {
+  /* color: var(--bs-white); */
+  background-color: var(--bs-gray-400);
 }
 
 thead {
@@ -56,13 +76,40 @@ thead {
   z-index: 10;
 }
 
+.table thead tr th button {
+  font-weight: 600;
+}
+.table thead tr th {
+  font-weight: 600;
+  color: var(--bs-gray-900);
+  background-color: var(--bs-secondary);
+  border-right-width: 1px;
+  border-right-color: red;
+}
+
 thead th {
   vertical-align: middle;
 }
 
 .grid {
   align-items: stretch;
-  gap: 20px;
+}
+
+.category-header {
+  border-radius: 0;
+  width: 100%;
+  border: 0 none;
+  font-weight: bold;
+  color: inherit;
+  background-color: transparent;
+}
+
+.category-header:hover,
+.category-header:focus,
+.category-header:active,
+.category-header:active.category-header:hover {
+  color: inherit;
+  background-color: inherit;
 }
 .grid .row {
   position: relative;
@@ -76,7 +123,7 @@ thead th {
 .grid .field-group {
   cursor: pointer;
   border: 1px solid #282c34;
-  border-radius: 0.5rem;
+  overflow: hidden;
   background-color: var(--white);
   width: 100%;
 }
@@ -84,31 +131,30 @@ thead th {
 .grid .field {
   display: block;
   width: 100%;
-}
-
-.grid .field-group:not(.never) .field {
-  border-bottom-left-radius: 0%;
-  border-bottom-right-radius: 0%;
-  border-bottom: 1px solid #161616;
-}
-
-.grid .field:hover,
-.grid .field:focus {
-  border-bottom: 1px solid #161616;
+  position: relative;
 }
 
 .icon {
   margin-left: 5px;
 }
 
-.grid .favourite {
+.checked-indicator {
+  font-size: 10px;
+  position: absolute;
+  top: 0;
+  left: 5px;
+}
+
+.grid .field-group button.favourite {
+  position: relative;
   width: 50%;
   border-top-left-radius: 0%;
   border-top-right-radius: 0%;
   border-bottom-right-radius: 0%;
 }
 
-.grid .new {
+.grid .field-group button.new {
+  position: relative;
   width: 50%;
   border-top-right-radius: 0%;
   border-top-left-radius: 0%;
@@ -144,6 +190,11 @@ thead th {
 }
 
 @media only screen and (max-width: 600px) {
+  .checked-indicator {
+    font-size: 8px;
+    left: 2px;
+  }
+
   .grid .field-group {
     display: block;
   }

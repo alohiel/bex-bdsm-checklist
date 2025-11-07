@@ -9,7 +9,9 @@ import {
   FaAssistiveListeningSystems,
   FaHandHoldingHeart,
   FaHands,
+  FaCheck,
 } from 'react-icons/fa'
+import { FaHeartPulse } from 'react-icons/fa6'
 import { TableFormKinds, FormContext } from './FormContext'
 import { Loading } from './Loading'
 import {
@@ -58,7 +60,7 @@ export const TableForm = (props: { kind: TableFormKinds }) => {
   }
 
   return (
-    <Table striped bordered size="sm" className="form-table">
+    <Table striped bordered size="sm" className="form-table" hover>
       <thead>
         <tr>
           <th style={{ width: ' 150px', textTransform: 'capitalize' }}>{props.kind}</th>
@@ -116,7 +118,7 @@ const Category = (props: { kind: TableFormKinds; category: string }) => {
 
   return (
     <OverlayTrigger placement="bottom" overlay={renderOverlay}>
-      <Button variant="outline-secondary">{categoryInfo.label}</Button>
+      <Button className="category-header">{categoryInfo.label}</Button>
     </OverlayTrigger>
   )
 }
@@ -150,6 +152,8 @@ const FieldOptions = (props: {
           <span className="icon" aria-hidden={true}>
             {icon}
           </span>
+
+          {isChecked && <CheckedIndicator />}
         </Button>
 
         <OverlayTrigger
@@ -162,6 +166,7 @@ const FieldOptions = (props: {
             variant={isFavourite ? 'danger' : 'secondary'}
             onClick={(event) => props.onChange('favourite')}>
             <FaHeart />
+            {isFavourite && <CheckedIndicator />}
           </Button>
         </OverlayTrigger>
         <OverlayTrigger
@@ -173,11 +178,20 @@ const FieldOptions = (props: {
             aria-checked={isNew}
             variant={isNew ? 'success' : 'secondary'}
             onClick={(event) => props.onChange('new')}>
+            {isNew && <CheckedIndicator />}
             <FaLeaf />
           </Button>
         </OverlayTrigger>
       </div>
     </Col>
+  )
+}
+
+const CheckedIndicator = () => {
+  return (
+    <div className="checked-indicator">
+      <FaCheck />
+    </div>
   )
 }
 
@@ -207,7 +221,7 @@ const getFieldLabelAndIcon = (kind: TableFormKinds, role: string) => {
       case Roles.giving:
         return { name: 'Inspiring', icon: <FaHandHoldingHeart /> }
       case Roles.receiving:
-        return { name: 'Feeling', icon: <FaHands /> }
+        return { name: 'Feeling', icon: <FaHeartPulse /> }
       default:
         break
     }

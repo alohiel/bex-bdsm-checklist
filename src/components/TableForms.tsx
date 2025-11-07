@@ -5,6 +5,7 @@ import { TableForm } from './TableForm'
 import { Nav } from 'react-bootstrap'
 import { Loading } from './Loading'
 import { RowLabels, FormCategories, emptyRolesExperiences, Roles } from '../utils/types'
+import { Summary } from './Summary'
 
 export const TableForms = (props: {}) => {
   const { forms, setForms } = useContext(FormContext)
@@ -92,6 +93,7 @@ export const TableForms = (props: {}) => {
       {tab === 'kinks' && <TableForm kind={TableFormKinds.kinks} />}
       {tab === 'language' && <TableForm kind={TableFormKinds.language} />}
       {tab === 'feelings' && <TableForm kind={TableFormKinds.feelings} />}
+      {tab === 'summary' && <Summary />}
     </div>
   )
 }

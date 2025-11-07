@@ -1,19 +1,14 @@
-import { Button } from 'react-bootstrap'
-import { useTheme } from 'styled-components'
 import { TableForms } from './TableForms'
-import ButtonExport from './ButtonExport'
+import { ButtonExport } from './ButtonExport'
 import { ButtonImport } from './ButtonImport'
-export const Main = (props: {}) => {
-  const theme = useTheme()
 
+export const Main = (props: {}) => {
   return (
     <div className="App">
-      <ButtonImport />
-      <ButtonExport />
       <header className="App-header">
         <h1>Yes/No/Maybe</h1>
         <p>
-          Interactive version of{' '}
+          This is an interactive version of{' '}
           <a href="https://www.bextalkssex.com/" target="_blank">
             Bex Caputo
           </a>
@@ -25,10 +20,17 @@ export const Main = (props: {}) => {
           </a>
           .
         </p>
+        <p>
+          Pick as many or as few options as you like; the summary will only show the options you
+          have selected.
+        </p>
+
+        <div className="fileOptions">
+          <ButtonExport />
+          <ButtonImport />
+        </div>
       </header>
       <main>
-        <section></section>
-
         <TableForms />
       </main>
     </div>

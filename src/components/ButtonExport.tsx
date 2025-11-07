@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { FormContext } from './FormContext'
 import { Button } from 'react-bootstrap'
 
-const DownloadJSON = ({}) => {
+export const ButtonExport = ({}) => {
   const { forms } = useContext(FormContext)
   const downloadJSON = () => {
     const jsonData = new Blob([JSON.stringify(forms)], { type: 'application/json' })
@@ -15,7 +15,5 @@ const DownloadJSON = ({}) => {
     document.body.removeChild(link)
   }
 
-  return <Button onClick={downloadJSON}>Export</Button>
+  return <Button onClick={downloadJSON}>Export Selection</Button>
 }
-
-export default DownloadJSON

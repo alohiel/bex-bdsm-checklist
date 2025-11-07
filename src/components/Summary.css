@@ -1,0 +1,16 @@
+.summary {
+  background-color: var(--bs-gray-200);
+}
+
+.summary .favourite {
+  color: var(--bs-danger);
+}
+
+.summary .new {
+  color: var(--bs-success);
+}
+
+.summary .new,
+.summary .favourite {
+  margin-left: 0.5rem;
+}
