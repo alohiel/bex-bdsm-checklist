@@ -1,5 +1,5 @@
-import { useContext } from 'react'
-import { Table, Container, Row, Col, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { useContext, useState } from 'react'
+import { Table, Container, Row, Col, Button, OverlayTrigger, Tooltip, Form } from 'react-bootstrap'
 import {
   FaHeart,
   FaLeaf,
@@ -21,15 +21,26 @@ import {
   FormCategories,
   experienceText,
   Experiences,
+  setEmptyRow,
 } from '../utils/types'
 
 export const TableForm = (props: { kind: TableFormKinds }) => {
   const { forms, setForms } = useContext(FormContext)
+  const [newRow, setNewRow] = useState('')
   const tableFormValues = forms[props.kind]
   const categories =
     props.kind !== TableFormKinds.feelings
       ? [FormCategories.into, FormCategories.willing, FormCategories.maybe, FormCategories.no]
       : [FormCategories.often, FormCategories.sometimes, FormCategories.never]
+
+  const handleAddRow = () => {
+    if (newRow.length) {
+      const newRowObject = { [newRow]: setEmptyRow(props.kind) }
+      const newKind = { ...forms[props.kind], ...newRowObject }
+      setForms({ ...forms, [props.kind]: newKind })
+      setNewRow('')
+    }
+  }
 
   const handleChange = (
     activity: string,
@@ -106,6 +117,26 @@ export const TableForm = (props: { kind: TableFormKinds }) => {
             )
           })}
       </tbody>
+      <tfoot>
+        <tr>
+          <td colSpan={props.kind !== TableFormKinds.feelings ? 5 : 4}>
+            <div className="add-row">
+              <Form.Group>
+                <Form.Control
+                  aria-label="Row name"
+                  type="text"
+                  placeholder="Row Name"
+                  value={newRow}
+                  onChange={(event) => {
+                    setNewRow(event.target.value)
+                  }}
+                />
+              </Form.Group>
+              <Button onClick={() => handleAddRow()}>Add Row</Button>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
     </Table>
   )
 }

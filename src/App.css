@@ -111,6 +111,25 @@ thead th {
   color: inherit;
   background-color: inherit;
 }
+
+.add-row {
+  background-color: var(--bs-gray-400);
+  align-items: end;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.add-row button,
+.add-row > div,
+.add-row input {
+  margin: 0.5rem 0.2rem;
+  display: inline;
+}
+
+.add-row input {
+  max-width: 300px;
+}
+
 .grid .row {
   position: relative;
 }

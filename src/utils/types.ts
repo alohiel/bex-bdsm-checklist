@@ -123,3 +123,24 @@ export const experienceText = {
   [Experiences.favourite]: { label: `Favourite`, text: `Indicates a favourite.` },
   [Experiences.new]: { label: `New`, text: `Indicates something this person has never tried.` },
 }
+
+export const setEmptyRow = (kind) => {
+  return kind !== TableFormKinds.feelings
+    ? {
+        [FormCategories.into]: emptyRolesExperiences,
+        [FormCategories.willing]: emptyRolesExperiences,
+        [FormCategories.maybe]: emptyRolesExperiences,
+        [FormCategories.no]: {
+          [Roles.giving]: { selected: false },
+          [Roles.receiving]: { selected: false },
+        },
+      }
+    : {
+        [FormCategories.often]: emptyRolesExperiences,
+        [FormCategories.sometimes]: emptyRolesExperiences,
+        [FormCategories.never]: {
+          [Roles.giving]: { selected: false },
+          [Roles.receiving]: { selected: false },
+        },
+      }
+}

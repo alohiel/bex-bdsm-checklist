@@ -1,10 +1,17 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import Papa from 'papaparse'
 import { FormContext, TableFormKinds } from './FormContext'
 import { TableForm } from './TableForm'
 import { Nav } from 'react-bootstrap'
 import { Loading } from './Loading'
-import { RowLabels, FormCategories, emptyRolesExperiences, Roles } from '../utils/types'
+import {
+  RowLabels,
+  FormCategories,
+  emptyRolesExperiences,
+  Roles,
+  kindText,
+  setEmptyRow,
+} from '../utils/types'
 import { Summary } from './Summary'
 
 export const TableForms = (props: {}) => {
@@ -34,25 +41,7 @@ export const TableForms = (props: {}) => {
       }
       Object.keys(rowLabels).forEach((kind) => {
         rowLabels[kind].forEach((label: string) => {
-          emptyForm[kind][label] =
-            kind !== TableFormKinds.feelings
-              ? {
-                  [FormCategories.into]: emptyRolesExperiences,
-                  [FormCategories.willing]: emptyRolesExperiences,
-                  [FormCategories.maybe]: emptyRolesExperiences,
-                  [FormCategories.no]: {
-                    [Roles.giving]: { selected: false },
-                    [Roles.receiving]: { selected: false },
-                  },
-                }
-              : {
-                  [FormCategories.often]: emptyRolesExperiences,
-                  [FormCategories.sometimes]: emptyRolesExperiences,
-                  [FormCategories.never]: {
-                    [Roles.giving]: { selected: false },
-                    [Roles.receiving]: { selected: false },
-                  },
-                }
+          emptyForm[kind][label] = setEmptyRow(kind)
         })
         setForms(emptyForm)
       })
@@ -61,38 +50,36 @@ export const TableForms = (props: {}) => {
     loadInterests()
   }, [])
 
+  const tabHandler = (kind) => {
+    setTab(kind as TableFormKinds)
+    window.scrollTo(0, 0)
+  }
+
   if (!Object.keys(forms).length) {
     return <Loading />
   }
   return (
     <div>
       <Nav variant="pills" defaultActiveKey="kinks" className="subnav">
-        <Nav.Item>
-          <Nav.Link eventKey="kinks" onClick={() => setTab('kinks')}>
-            Kinks
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="language" onClick={() => setTab('language')}>
-            Language
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="feelings" onClick={() => setTab('feelings')}>
-            Feelings
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item style={{ marginLeft: 'auto' }}>
-          {' '}
-          <Nav.Link eventKey="summary" onClick={() => setTab('summary')}>
+        {Object.keys(forms).map((kind) => {
+          return (
+            <Nav.Item key={kind}>
+              <Nav.Link eventKey={kind} onClick={() => tabHandler(kind)}>
+                {kindText[kind]}
+              </Nav.Link>
+            </Nav.Item>
+          )
+        })}
+        <Nav.Item style={{ marginLeft: 'auto' }} key="summary">
+          <Nav.Link eventKey="summary" onClick={() => tabHandler('summary')}>
             Summary
           </Nav.Link>
         </Nav.Item>
       </Nav>
 
-      {tab === 'kinks' && <TableForm kind={TableFormKinds.kinks} />}
-      {tab === 'language' && <TableForm kind={TableFormKinds.language} />}
-      {tab === 'feelings' && <TableForm kind={TableFormKinds.feelings} />}
+      {Object.keys(forms).map((kind) => {
+        if (tab === kind) return <TableForm key={kind} kind={kind as TableFormKinds} />
+      })}
       {tab === 'summary' && <Summary />}
     </div>
   )

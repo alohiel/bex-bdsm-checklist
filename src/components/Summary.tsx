@@ -134,17 +134,17 @@ export const Summary = (props: any) => {
     <div className="summary">
       {Object.keys(listsByCategory).map((kind) => {
         return (
-          <>
+          <div key={kind}>
             <h2>{kindText[kind]}</h2>
             <Row>
               {Object.keys(listsByCategory[kind]).map((category) => {
                 return (
-                  <Col>
+                  <Col key={category}>
                     <h3>{categoryText[category].label}</h3>
                     <Row>
                       {Object.keys(listsByCategory[kind][category]).map((role) => {
                         return (
-                          <Col>
+                          <Col key={role}>
                             <h4>{roleText[kind][role].label}</h4>
                             <ListGroup variant="">
                               {Object.keys(listsByCategory[kind][category][role]).map(
@@ -178,7 +178,7 @@ export const Summary = (props: any) => {
                 )
               })}
             </Row>
-          </>
+          </div>
         )
       })}
     </div>
