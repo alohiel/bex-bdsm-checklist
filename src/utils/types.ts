@@ -88,7 +88,7 @@ export const categoryText = {
   },
   [FormCategories.maybe]: {
     label: `Maybe`,
-    tooltip: `For activities you're only into under certain circumstances, or activities you're`,
+    tooltip: `For activities you're only into under certain circumstances, or activities you're not sure about, or activities you want to learn more about, etc.`,
   },
   [FormCategories.no]: {
     label: `No`,

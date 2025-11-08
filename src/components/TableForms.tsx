@@ -53,7 +53,7 @@ export const TableForms = (props: {}) => {
   }
   return (
     <div>
-      <div className="subnav print-hide">
+      <div className="subnav print-hide" role="navigation">
         <Nav variant="pills" defaultActiveKey="kinks" className="max-width">
           {Object.keys(forms).map((kind) => {
             return (
