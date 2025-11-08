@@ -130,6 +130,9 @@ export const Summary = (props: any) => {
     setListsByCategory(filterEmptyKinds)
   }, [forms])
 
+  if (!Object.keys(listsByCategory).length) {
+    return <div className="summary-empty">You haven't selected any options yet!</div>
+  }
   return (
     <div className="summary">
       {Object.keys(listsByCategory).map((kind) => {

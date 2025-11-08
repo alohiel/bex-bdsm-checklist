@@ -71,10 +71,10 @@ export const TableForm = (props: { kind: TableFormKinds }) => {
   }
 
   return (
-    <Table striped bordered size="sm" className="form-table" hover>
+    <Table striped bordered size="sm" className="form-table max-width" hover>
       <thead>
         <tr>
-          <th style={{ width: ' 150px', textTransform: 'capitalize' }}>{props.kind}</th>
+          <th style={{ width: '120px', textTransform: 'capitalize' }}>{props.kind}</th>
           {categories.map((category) => {
             return (
               <th key={`heading-${category}`}>

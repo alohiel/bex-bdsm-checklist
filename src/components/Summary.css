@@ -14,3 +14,8 @@
 .summary .favourite {
   margin-left: 0.5rem;
 }
+
+.summary-empty {
+  color: var(--bs-white);
+  padding: 3rem;
+}

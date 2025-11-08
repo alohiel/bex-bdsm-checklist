@@ -60,23 +60,24 @@ export const TableForms = (props: {}) => {
   }
   return (
     <div>
-      <Nav variant="pills" defaultActiveKey="kinks" className="subnav">
-        {Object.keys(forms).map((kind) => {
-          return (
-            <Nav.Item key={kind}>
-              <Nav.Link eventKey={kind} onClick={() => tabHandler(kind)}>
-                {kindText[kind]}
-              </Nav.Link>
-            </Nav.Item>
-          )
-        })}
-        <Nav.Item style={{ marginLeft: 'auto' }} key="summary">
-          <Nav.Link eventKey="summary" onClick={() => tabHandler('summary')}>
-            Summary
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
-
+      <div className="subnav">
+        <Nav variant="pills" defaultActiveKey="kinks" className="max-width">
+          {Object.keys(forms).map((kind) => {
+            return (
+              <Nav.Item key={kind}>
+                <Nav.Link eventKey={kind} onClick={() => tabHandler(kind)}>
+                  {kindText[kind]}
+                </Nav.Link>
+              </Nav.Item>
+            )
+          })}
+          <Nav.Item style={{ marginLeft: 'auto' }} key="summary">
+            <Nav.Link eventKey="summary" onClick={() => tabHandler('summary')}>
+              Summary
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+      </div>
       {Object.keys(forms).map((kind) => {
         if (tab === kind) return <TableForm key={kind} kind={kind as TableFormKinds} />
       })}

@@ -1,19 +1,10 @@
-:root {
-  --primary: #4bb521;
-  --yellow: #ffdd00;
-  --black: #161616;
-  --light-grey: #bdbdbd;
-  --dark-grey: #565656;
-  --white: #ffffff;
-}
-
 * {
   box-sizing: border-box;
 }
 
 .App {
   text-align: center;
-  background-color: #464d5a;
+  background-color: var(--bs-gray-600);
   min-height: 100vh;
 }
 
@@ -26,6 +17,12 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.max-width {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .App-header {
@@ -48,6 +45,7 @@
 
 .fileOptions {
   display: flex;
+  justify-content: center;
   gap: 10px;
   margin: 0 auto 20px;
 }
@@ -63,6 +61,12 @@
   z-index: 10;
   font-weight: 700;
 }
+.stripe {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-bottom: 3rem solid var(--bs-secondary);
+}
 
 .table-hover > tbody > tr:hover > *,
 .table-hover > tbody > tr:focus-within > * {
@@ -75,6 +79,9 @@ thead {
   top: 40px;
   z-index: 10;
 }
+thead tr {
+  height: 3rem;
+}
 
 .table thead tr th button {
   font-weight: 600;
@@ -84,7 +91,6 @@ thead {
   color: var(--bs-gray-900);
   background-color: var(--bs-secondary);
   border-right-width: 1px;
-  border-right-color: red;
 }
 
 thead th {
