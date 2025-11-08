@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { FormContext } from './FormContext'
 import { Button } from 'react-bootstrap'
 
-export const ButtonExport = ({}) => {
+export const ButtonExport = () => {
   const { forms } = useContext(FormContext)
   const downloadJSON = () => {
     const jsonData = new Blob([JSON.stringify(forms)], { type: 'application/json' })

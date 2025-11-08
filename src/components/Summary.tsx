@@ -1,9 +1,8 @@
 import './Summary.css'
 import { useContext, useEffect, useState } from 'react'
-import { Col, Container, ListGroup, Row } from 'react-bootstrap'
+import { Col, ListGroup, Row } from 'react-bootstrap'
 import { FormContext } from './FormContext'
 import {
-  ActivityProperties,
   categoryText,
   FormCategories,
   kindText,
@@ -134,26 +133,26 @@ export const Summary = (props: any) => {
     return <div className="summary-empty">You haven't selected any options yet!</div>
   }
   return (
-    <div className="summary">
+    <div className="summary max-width">
       {Object.keys(listsByCategory).map((kind) => {
         return (
           <div key={kind}>
             <h2>{kindText[kind]}</h2>
-            <Row>
+            <div className="category-row">
               {Object.keys(listsByCategory[kind]).map((category) => {
                 return (
-                  <Col key={category}>
+                  <div className="category">
                     <h3>{categoryText[category].label}</h3>
-                    <Row>
+                    <Row style={{ padding: 0, margin: 0 }}>
                       {Object.keys(listsByCategory[kind][category]).map((role) => {
                         return (
-                          <Col key={role}>
+                          <Col key={role} className="role">
                             <h4>{roleText[kind][role].label}</h4>
-                            <ListGroup variant="">
+                            <ul>
                               {Object.keys(listsByCategory[kind][category][role]).map(
                                 (activity) => {
                                   return (
-                                    <ListGroup.Item key={`${role}-${activity}`}>
+                                    <li key={`${role}-${activity}`}>
                                       {activity}
                                       {listsByCategory[kind][category][role][activity]
                                         .favourite && (
@@ -168,19 +167,19 @@ export const Summary = (props: any) => {
                                           <div className="sr-only">New</div>
                                         </span>
                                       )}
-                                    </ListGroup.Item>
+                                    </li>
                                   )
                                 }
                               )}
-                            </ListGroup>
+                            </ul>
                           </Col>
                         )
                       })}
                     </Row>
-                  </Col>
+                  </div>
                 )
               })}
-            </Row>
+            </div>
           </div>
         )
       })}

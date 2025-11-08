@@ -1,17 +1,10 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Papa from 'papaparse'
 import { FormContext, TableFormKinds } from './FormContext'
 import { TableForm } from './TableForm'
 import { Nav } from 'react-bootstrap'
 import { Loading } from './Loading'
-import {
-  RowLabels,
-  FormCategories,
-  emptyRolesExperiences,
-  Roles,
-  kindText,
-  setEmptyRow,
-} from '../utils/types'
+import { RowLabels, kindText, setEmptyRow } from '../utils/types'
 import { Summary } from './Summary'
 
 export const TableForms = (props: {}) => {
@@ -26,7 +19,7 @@ export const TableForms = (props: {}) => {
       let language: string[] = []
       let feelings: string[] = []
 
-      Papa.parse<string[]>(dataText).data.map((data, index) => {
+      Papa.parse<string[]>(dataText).data.forEach((data, index) => {
         if (index === 0) return
         if (data[0]) kinks.push(data[0])
         if (data[1]) language.push(data[1])
@@ -48,7 +41,7 @@ export const TableForms = (props: {}) => {
     }
 
     loadInterests()
-  }, [])
+  }, [setForms])
 
   const tabHandler = (kind) => {
     setTab(kind as TableFormKinds)
@@ -60,7 +53,7 @@ export const TableForms = (props: {}) => {
   }
   return (
     <div>
-      <div className="subnav">
+      <div className="subnav print-hide">
         <Nav variant="pills" defaultActiveKey="kinks" className="max-width">
           {Object.keys(forms).map((kind) => {
             return (
@@ -79,7 +72,7 @@ export const TableForms = (props: {}) => {
         </Nav>
       </div>
       {Object.keys(forms).map((kind) => {
-        if (tab === kind) return <TableForm key={kind} kind={kind as TableFormKinds} />
+        return tab === kind && <TableForm key={kind} kind={kind as TableFormKinds} />
       })}
       {tab === 'summary' && <Summary />}
     </div>

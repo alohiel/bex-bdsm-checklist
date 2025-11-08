@@ -8,7 +8,6 @@ import {
   FaVolumeUp,
   FaAssistiveListeningSystems,
   FaHandHoldingHeart,
-  FaHands,
   FaCheck,
 } from 'react-icons/fa'
 import { FaHeartPulse } from 'react-icons/fa6'
@@ -162,7 +161,6 @@ const FieldOptions = (props: {
   isNeverColumn: boolean
   onChange: (field: 'selected' | 'new' | 'favourite') => void
 }) => {
-  const id = props.id
   const isChecked = props.field.selected
   const isNew = props.field.new
   const isFavourite = props.field.favourite
@@ -172,6 +170,7 @@ const FieldOptions = (props: {
     <Col className="column">
       <div className={`field-group ${props.isNeverColumn && 'never'}`}>
         <Button
+          id={props.id}
           className="field"
           variant={isChecked ? 'primary' : 'secondary'}
           aria-selected={isChecked}
