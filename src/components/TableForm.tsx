@@ -73,7 +73,9 @@ export const TableForm = (props: { kind: TableFormKinds }) => {
     <Table striped bordered size="sm" className="form-table max-width" hover>
       <thead>
         <tr>
-          <th style={{ width: '120px', textTransform: 'capitalize' }}>{props.kind}</th>
+          <th className="row-label-header" style={{ textTransform: 'capitalize' }}>
+            {props.kind}
+          </th>
           {categories.map((category) => {
             return (
               <th key={`heading-${category}`}>
@@ -88,7 +90,9 @@ export const TableForm = (props: { kind: TableFormKinds }) => {
           Object.keys(tableFormValues).map((row) => {
             return (
               <tr key={`interest-${row}`}>
-                <td>{row}</td>
+                <td>
+                  <div className="row-label">{row}</div>
+                </td>
                 {categories.map((column) => {
                   return (
                     <td key={`answers-${row}-${column}`}>
