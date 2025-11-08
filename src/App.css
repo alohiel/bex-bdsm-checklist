@@ -220,6 +220,10 @@ thead th {
   overflow: hidden;
 }
 
+.form-table td:last-child .column {
+  margin-bottom: 2.5rem;
+}
+
 @media only screen and (max-width: 450px) {
   .nav-link {
     padding: 0.5rem;
@@ -245,6 +249,10 @@ thead th {
 
   .form-table td {
     padding: 0;
+  }
+
+  .form-table td:last-child .column {
+    margin-bottom: 2.3rem;
   }
 
   .row-label-header,
