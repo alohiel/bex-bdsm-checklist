@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/bex-bdsm-checklist/static/css/main.aa02a955.css",
-    "main.js": "/bex-bdsm-checklist/static/js/main.f4639da0.js",
+    "main.css": "/bex-bdsm-checklist/static/css/main.81ba8d14.css",
+    "main.js": "/bex-bdsm-checklist/static/js/main.d71b6ae7.js",
     "static/js/453.58f5de71.chunk.js": "/bex-bdsm-checklist/static/js/453.58f5de71.chunk.js",
     "index.html": "/bex-bdsm-checklist/index.html",
-    "main.aa02a955.css.map": "/bex-bdsm-checklist/static/css/main.aa02a955.css.map",
-    "main.f4639da0.js.map": "/bex-bdsm-checklist/static/js/main.f4639da0.js.map",
+    "main.81ba8d14.css.map": "/bex-bdsm-checklist/static/css/main.81ba8d14.css.map",
+    "main.d71b6ae7.js.map": "/bex-bdsm-checklist/static/js/main.d71b6ae7.js.map",
     "453.58f5de71.chunk.js.map": "/bex-bdsm-checklist/static/js/453.58f5de71.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.aa02a955.css",
-    "static/js/main.f4639da0.js"
+    "static/css/main.81ba8d14.css",
+    "static/js/main.d71b6ae7.js"
   ]
 }
