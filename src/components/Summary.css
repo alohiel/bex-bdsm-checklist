@@ -62,7 +62,7 @@
 }
 
 .summary-empty {
-  color: var(--bs-white);
+  color: var(--bs-gray-900);
   padding: 3rem;
 }
 
