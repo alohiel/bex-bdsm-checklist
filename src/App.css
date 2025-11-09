@@ -121,9 +121,13 @@ thead th {
 
 .add-row {
   background-color: var(--bs-gray-400);
-  align-items: end;
   padding: 10px 0;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  gap: 4px;
 }
 
 .add-row button,
@@ -135,6 +139,10 @@ thead th {
 
 .add-row input {
   max-width: 300px;
+}
+
+.add-row .btn {
+  font-size: 0.95rem;
 }
 
 .grid .row {
@@ -266,6 +274,10 @@ thead th {
   .category-header {
     padding: 0.1rem;
   }
+
+  .add-row > div {
+    margin: 0.2rem;
+  }
 }
 @media only screen and (min-width: 451px) and (max-width: 800px) {
   .nav-link {
@@ -299,6 +311,10 @@ thead th {
 
   .category-header {
     padding: 0.1rem;
+  }
+
+  .add-row > div {
+    margin: 0.2rem;
   }
 }
 @media only screen and (max-width: 950px) {
