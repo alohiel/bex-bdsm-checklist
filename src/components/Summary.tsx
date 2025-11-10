@@ -149,8 +149,13 @@ export const Summary = (props: any) => {
                           <Col key={role} className="role">
                             <h4>{roleText[kind][role].label}</h4>
                             <ul>
-                              {Object.keys(listsByCategory[kind][category][role]).map(
-                                (activity) => {
+                              {Object.keys(listsByCategory[kind][category][role])
+                                .sort((a, b) => {
+                                  if (a.toUpperCase() < b.toUpperCase()) return -1
+                                  if (a.toUpperCase() > b.toUpperCase()) return 1
+                                  return 0
+                                })
+                                .map((activity) => {
                                   return (
                                     <li key={`${role}-${activity}`}>
                                       {activity}
@@ -169,8 +174,7 @@ export const Summary = (props: any) => {
                                       )}
                                     </li>
                                   )
-                                }
-                              )}
+                                })}
                             </ul>
                           </Col>
                         )

@@ -209,6 +209,9 @@ thead th {
   width: 170px;
   padding: 0.5rem;
 }
+.row-label-header .btn {
+  text-transform: capitalize;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

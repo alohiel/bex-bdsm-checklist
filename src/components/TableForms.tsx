@@ -32,12 +32,14 @@ export const TableForms = (props: {}) => {
         [TableFormKinds.language]: {},
         [TableFormKinds.feelings]: {},
       }
-      Object.keys(rowLabels).forEach((kind) => {
-        rowLabels[kind].forEach((label: string) => {
-          emptyForm[kind][label] = setEmptyRow(kind)
+      Object.keys(rowLabels)
+        .sort()
+        .forEach((kind) => {
+          rowLabels[kind].forEach((label: string) => {
+            emptyForm[kind][label] = setEmptyRow(kind)
+          })
+          setForms(emptyForm)
         })
-        setForms(emptyForm)
-      })
     }
 
     loadInterests()

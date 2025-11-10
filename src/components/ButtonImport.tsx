@@ -1,9 +1,10 @@
 import { useContext, useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
-import { FormContext } from './FormContext'
+import { FormContext, TableFormKinds } from './FormContext'
+import { json } from 'stream/consumers'
 
 export const ButtonImport = () => {
-  const { setForms } = useContext(FormContext)
+  const { forms, setForms } = useContext(FormContext)
   const [modalOpen, setModalOpen] = useState(false)
 
   const handleFileChange = (e) => {
@@ -14,9 +15,25 @@ export const ButtonImport = () => {
       const reader = new FileReader()
       reader.readAsText(uploadedFile, 'UTF-8')
       reader.onload = (reader) => {
-        const string = JSON.parse(reader.target.result as string)
-        setForms(string)
-        setModalOpen(false)
+        const jsonInput = JSON.parse(reader.target.result as string)
+        if (jsonInput.kinks && jsonInput.language && jsonInput.feelings) {
+          setForms({
+            ...forms,
+            [TableFormKinds.kinks]: {
+              ...forms[TableFormKinds.kinks],
+              ...jsonInput[TableFormKinds.kinks],
+            },
+            [TableFormKinds.language]: {
+              ...forms[TableFormKinds.language],
+              ...jsonInput[TableFormKinds.language],
+            },
+            [TableFormKinds.feelings]: {
+              ...forms[TableFormKinds.feelings],
+              ...jsonInput[TableFormKinds.feelings],
+            },
+          })
+          setModalOpen(false)
+        }
       }
     }
   }

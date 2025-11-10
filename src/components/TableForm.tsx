@@ -9,6 +9,10 @@ import {
   FaAssistiveListeningSystems,
   FaHandHoldingHeart,
   FaCheck,
+  FaChevronDown,
+  FaChevronUp,
+  FaSortAlphaDown,
+  FaSort,
 } from 'react-icons/fa'
 import { FaHeartPulse } from 'react-icons/fa6'
 import { TableFormKinds, FormContext } from './FormContext'
@@ -25,6 +29,7 @@ import {
 
 export const TableForm = (props: { kind: TableFormKinds }) => {
   const { forms, setForms } = useContext(FormContext)
+  const [sort, setSort] = useState<-1 | 0 | 1>(0)
   const [newRow, setNewRow] = useState('')
   const tableFormValues = forms[props.kind]
   const categories =
@@ -38,7 +43,26 @@ export const TableForm = (props: { kind: TableFormKinds }) => {
       const newKind = { ...forms[props.kind], ...newRowObject }
       setForms({ ...forms, [props.kind]: newKind })
       setNewRow('')
+      setSort(0)
     }
+  }
+
+  const sortList = (a: string, b: string) => {
+    const itemA = a.toUpperCase()
+    const itemB = b.toUpperCase()
+
+    if (itemA < itemB) return -1
+    if (itemA > itemB) return 1
+    return 0
+  }
+
+  const sortListReverse = (a: string, b: string) => {
+    const itemA = a.toUpperCase()
+    const itemB = b.toUpperCase()
+
+    if (itemA > itemB) return -1
+    if (itemA < itemB) return 1
+    return 0
   }
 
   const handleChange = (
@@ -69,12 +93,42 @@ export const TableForm = (props: { kind: TableFormKinds }) => {
     return <Loading />
   }
 
+  const listOfKeys =
+    sort === 0
+      ? Object.keys(tableFormValues)
+      : sort === -1
+      ? Object.keys(tableFormValues).sort(sortListReverse)
+      : Object.keys(tableFormValues).sort(sortList)
+
   return (
     <Table striped bordered size="sm" className="form-table max-width" hover>
       <thead>
         <tr>
-          <th className="row-label-header" style={{ textTransform: 'capitalize' }}>
-            {props.kind}
+          <th
+            className="row-label-header"
+            style={{ textTransform: 'capitalize' }}
+            aria-sort={sort === 1 ? 'descending' : sort === -1 ? 'ascending' : 'none'}>
+            <Button className="category-header" onClick={() => setSort(sort === 1 ? -1 : 1)}>
+              {props.kind}{' '}
+              {sort === 0 && (
+                <>
+                  <FaSort />
+                  <span className="sr-only">Sort (A-Z)</span>
+                </>
+              )}
+              {sort === -1 && (
+                <>
+                  <FaChevronUp />
+                  <span className="sr-only">Sort (A-Z)</span>
+                </>
+              )}
+              {sort === 1 && (
+                <>
+                  <FaChevronDown />
+                  <span className="sr-only">Sort (Z-A) </span>
+                </>
+              )}
+            </Button>
           </th>
           {categories.map((category) => {
             return (
@@ -87,7 +141,7 @@ export const TableForm = (props: { kind: TableFormKinds }) => {
       </thead>
       <tbody>
         {tableFormValues &&
-          Object.keys(tableFormValues).map((row) => {
+          listOfKeys.map((row) => {
             return (
               <tr key={`interest-${row}`}>
                 <td>
