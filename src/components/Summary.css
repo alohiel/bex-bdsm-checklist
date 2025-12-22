@@ -67,6 +67,9 @@
 }
 
 @media print {
+  @page {
+    size: A4; /* Use A4 paper size */
+  }
   .print-hide {
     display: none;
   }
@@ -75,13 +78,53 @@
     content: ' (' attr(href) ')';
   }
 
+  .summary {
+    padding: 0;
+  }
+
+  /* sticky headers for each section */
+  .summary .wrapper {
+    display: table;
+    width: 100%;
+    page-break-after: always;
+  }
+
+  .summary .print-header {
+    display: table-header-group;
+    position: sticky;
+  }
+  .summary h2 {
+    padding: 1rem;
+    display: table-cell;
+  }
+  /* end sticky section headers */
+
   .summary .category {
+    display: block;
     page-break-inside: avoid;
+  }
+  .summary .role {
+    flex: 1 1 100%;
+  }
+
+  .summary .category .role:first-of-type {
+    padding: 0.2cm;
   }
 
   .summary h3,
   .summary .role,
   .summary h4 {
     border: 0 none;
+  }
+
+  ul {
+    column-width: 15vw;
+    column-count: 3;
+    text-align: left;
+  }
+
+  .summary .new,
+  .summary .favourite {
+    white-space: nowrap;
   }
 }

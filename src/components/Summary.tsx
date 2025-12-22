@@ -136,8 +136,10 @@ export const Summary = (props: any) => {
     <div className="summary max-width">
       {Object.keys(listsByCategory).map((kind) => {
         return (
-          <div key={kind}>
-            <h2>{kindText[kind]}</h2>
+          <div key={kind} className="wrapper">
+            <span className="print-header">
+              <h2>{kindText[kind]}</h2>
+            </span>
             <div className="category-row">
               {Object.keys(listsByCategory[kind]).map((category) => {
                 return (

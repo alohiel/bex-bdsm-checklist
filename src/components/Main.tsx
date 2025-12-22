@@ -5,7 +5,7 @@ import { ButtonImport } from './ButtonImport'
 export const Main = (props: {}) => {
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header print-hide">
         <div className="maxWidth">
           <h1>Yes/No/Maybe</h1>
           <p>
